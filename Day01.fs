@@ -3,11 +3,11 @@ namespace Advent
 open System
 open FSharp.Collections
 
-module Day1 =
+module Day01 =
     let target = 2020L
 
     let numbers =
-        lazy (Data.ReadFile("day1") |> Data.Numbers)
+        lazy (Data.ReadFile("day01") |> Data.Numbers)
 
     let findPairSummingTo sum xs =
         let db = Set.empty
