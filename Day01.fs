@@ -17,13 +17,13 @@ module Day01 =
             | Some _ -> (db, found)
             | None -> if db |> Set.contains (sum - n) then (db |> Set.add n, Some n) else (db |> Set.add n, None)
 
-        match List.fold update (db, None) numbers.Value with
+        match List.fold update (db, None) xs with
         | (_, Some n) -> Some(n, sum - n)
         | (_, None) -> None
 
     let answer1 =
         lazy
-            (match findPairSummingTo target numbers with
+            (match findPairSummingTo target numbers.Value with
              | Some (n1, n2) -> n1 * n2
              | None -> failwith "Failed to find answer to problem #1")
 
