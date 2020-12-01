@@ -4,12 +4,12 @@ open FParsec
 
 module Data =
     let ReadFile (name: string) =
-        let r =
+        use r =
             new System.IO.StreamReader("data/" + name + ".txt")
 
         r.ReadToEnd()
 
-    let whitespaceP<'a> = many (anyOf "\r\n\t ")
+    let whitespaceP = many (anyOf "\r\n\t ")
 
     let numberP = sepEndBy pint64 whitespaceP
 
