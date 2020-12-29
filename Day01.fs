@@ -1,13 +1,21 @@
 namespace Advent
 
 open System
+open FParsec
 open FSharp.Collections
 
 module Day01 =
-    let target = 2020L
-
+    let target = 2020
+    
+    let numbersP = sepEndBy pint32 spaces
+    
+    let ParseNumbers str =
+        match run numbersP str with
+        | Success (result, _, _) -> result
+        | Failure (error, _, _) -> failwith error
+    
     let numbers =
-        lazy (Data.ReadFile("day01") |> Data.Numbers)
+        lazy (Data.ReadFile("day01") |> ParseNumbers)
 
     module Part1 =
         let findPairSummingTo sum xs =
