@@ -4,6 +4,6 @@ open Advent
 
 [<EntryPoint>]
 let main argv =
-    printfn "%u" Day01.answer1.Value
-    printfn "%u" Day01.answer2.Value
+    printfn "%u" Day02.Part1.answer.Value
+    printfn "%u" Day02.Part2.answer.Value
     0 // return an integer exit code
