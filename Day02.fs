@@ -38,7 +38,7 @@ module Day02 =
 
         let newAuditMethod (policy: Policy) (pw: string) = 
             policy.Min <= pw.Length && policy.Max <= pw.Length && policy.Min >= 1 && policy.Max >= 1 &&
-            xor (pw.[policy.Min-1].Equals(policy.Letter)) (pw.[policy.Max-1].Equals(policy.Letter))
+            xor (pw.[policy.Min-1] = policy.Letter) (pw .[policy.Max-1] = policy.Letter)
 
         let answer = lazy (
             passwords |> auditWith newAuditMethod |> countTrue
