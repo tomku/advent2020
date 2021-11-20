@@ -1,8 +1,6 @@
-namespace Advent
+﻿namespace Advent
 
-open System
 open FParsec
-open FSharp.Collections
 
 module Day01 =
     let target = 2020
@@ -50,3 +48,5 @@ module Day01 =
                 (match findTripleSummingTo target numbers.Value with
                  | Some (n1, n2, n3) -> n1 * n2 * n3
                  | None -> failwith "Failed to find answer to problem #2")
+
+              

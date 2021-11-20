@@ -1,7 +1,5 @@
 ﻿namespace Advent
 
-open System
-open FSharp.Collections
 open FParsec
 
 module Day02 =
