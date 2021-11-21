@@ -51,7 +51,7 @@ module Day04 =
             pchar '#' >>. pipe3 byte byte byte makeHairColor .>> followedBy eof
             <?> "hcl must start with '#' and be exactly six hex digits"
 
-        type EyeColor = | Amber | Blue | Brown  | Gray | Green | Hazel | Other
+        type EyeColor = Amber | Blue | Brown  | Gray | Green | Hazel | Other
         let makeEyeColor = function
         | "amb" -> Amber | "blu" -> Blue | "brn" -> Brown | "gry" -> Gray | "grn" -> Green
         | "hzl" -> Hazel | "oth" -> Other | _ -> failwith "Unknown hair color!"
