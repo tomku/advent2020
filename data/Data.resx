@@ -142,4 +142,7 @@
   <data name="day08" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\files\day08.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="day09" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\files\day09.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>
