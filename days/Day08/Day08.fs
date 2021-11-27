@@ -36,7 +36,7 @@ module Day08 =
                 Some (newState, newState)
             | _ -> None
 
-    let execute prg = Seq.unfold interpret (initState prg)
+    let execute = initState >> Seq.unfold interpret
 
     let program = Data.ReadFile "day08" |> ParseProgram
 
@@ -54,7 +54,9 @@ module Day08 =
             >> List.filter (function (_, Incr _) -> false | _ -> true)
             >> List.map (fun (i, instr) -> List.updateAt i (toggleNopJump instr) program)
 
-        let terminates states =
-            Seq.tryLast states |> Option.map (fun last -> last.Line = last.Program.Length) |> Option.contains true
+        let terminates =
+            Seq.tryLast 
+            >> Option.map (fun last -> last.Line = last.Program.Length) 
+            >> Option.contains true
 
-        let answer = lazy ( program |> mutate |> Seq.map execute |> Seq.find terminates |> Seq.last)
+        let answer = lazy ( program |> mutate |> Seq.map execute |> Seq.find terminates |> Seq.last |> (fun s -> s.Acc) )
