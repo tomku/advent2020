@@ -1,6 +1,6 @@
 ﻿namespace Advent
 
-module Main =   
+module Main =
     [<EntryPoint>]
     let main argv =
         printfn "%A" Day01.Part1.answer.Value

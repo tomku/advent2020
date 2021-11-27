@@ -4,16 +4,16 @@ open FParsec
 
 module Day01 =
     let target = 2020
-    
+
     let numbersP = sepEndBy pint32 spaces
-    
-    let ParseNumbers str =
+
+    let parseNumbers str =
         match run numbersP str with
         | Success (result, _, _) -> result
         | Failure (error, _, _) -> failwith error
-    
+
     let numbers =
-        lazy (Data.ReadFile("day01") |> ParseNumbers)
+        lazy (Data.readFile ("day01") |> parseNumbers)
 
     module Part1 =
         let findPairSummingTo sum xs =
@@ -22,7 +22,11 @@ module Day01 =
             let update (db, found) n =
                 match found with
                 | Some _ -> (db, found)
-                | None -> if db |> Set.contains (sum - n) then (db |> Set.add n, Some n) else (db |> Set.add n, None)
+                | None ->
+                    if db |> Set.contains (sum - n) then
+                        (db |> Set.add n, Some n)
+                    else
+                        (db |> Set.add n, None)
 
             match List.fold update (db, None) xs with
             | (_, Some n) -> Some(n, sum - n)
@@ -34,7 +38,7 @@ module Day01 =
                  | Some (n1, n2) -> n1 * n2
                  | None -> failwith "Failed to find answer to problem #1")
 
-    module Part2 = 
+    module Part2 =
         let rec findTripleSummingTo sum =
             function
             | x :: rest ->
@@ -48,5 +52,3 @@ module Day01 =
                 (match findTripleSummingTo target numbers.Value with
                  | Some (n1, n2, n3) -> n1 * n2 * n3
                  | None -> failwith "Failed to find answer to problem #2")
-
-              
